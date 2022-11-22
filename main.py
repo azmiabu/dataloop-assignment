@@ -21,7 +21,7 @@ dataset.items.upload(local_path="/Users/azmi_abu/Desktop/photos")
 # create metadata dictionary for user and add UTM for each picture
 items = dataset.items.get_all_items()
 for item in items:
-    # deleting all annotations
+    # deleting all previous annotations
     item.annotations.delete(filters=dl.Filters(resource=dl.FILTERS_RESOURCE_ANNOTATION))
     item.metadata['user'] = dict()
     item.metadata['user']['collectionTime'] = str(datetime.datetime.now())

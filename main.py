@@ -51,17 +51,13 @@ for item in items:
     print('Item ID is: ', item.id)
     print('Item Name is: ', item.name)
 
-# retrieve all items that contain point annotations from the dataset
-filters = dl.Filters()
-filters.add_join(field='type', values='point')
-items = dataset.items.get_all_items(filters=filters)
-
-# annotations list
+# retrieve annotations list from the dataset
 filters = dl.Filters()
 filters.resource = dl.FILTERS_RESOURCE_ANNOTATION
 filters.add(field='type', values='point')
 pages = dataset.annotations.list(filters=filters)
 
+# loop over the annotations and print the requested data
 for page in pages:
     for annotation in page:
         print('Item ID is: ', annotation.item.id)
